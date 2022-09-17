@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YaghotPractice"
+       android:layout_marginTop="158dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/enableWIFI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable WIFI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginTop="16dp"
+         />
+    <Button
+        android:id="@+id/disableWIFI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disable WIFI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enableWIFI"
+        android:layout_marginTop="16dp"
+         />
+    <Button
+        android:id="@+id/enableBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Bluetooth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disableWIFI"
+        android:layout_marginTop="16dp"
+         />
+    <Button
+        android:id="@+id/disableBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disable Bluetooth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enableBluetooth"
+        android:layout_marginTop="16dp"
+         />
+    <Button
+        android:id="@+id/getLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get Location Access"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disableBluetooth"
+        android:layout_marginTop="16dp"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
