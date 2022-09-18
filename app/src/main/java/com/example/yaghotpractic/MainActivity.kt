@@ -29,6 +29,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatDelegate.create
 import androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat.create
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.widget.EdgeEffectCompat.create
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
@@ -43,6 +44,7 @@ import java.io.IOException
 import java.net.URI.create
 import java.util.*
 
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var wifiManager: WifiManager
@@ -64,6 +66,41 @@ class MainActivity : AppCompatActivity() {
         val bluetoothManager =
             applicationContext.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
         val bluetoothAdapter = bluetoothManager.adapter
+
+
+
+
+
+
+
+
+
+
+        if (ContextCompat.checkSelfPermission(this@MainActivity,
+                Manifest.permission.ACCESS_FINE_LOCATION) !==
+            PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this@MainActivity,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this@MainActivity,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            } else {
+                ActivityCompat.requestPermissions(this@MainActivity,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         with(binding)
         {
             enableWIFI.setOnClickListener {
@@ -102,14 +139,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             binding.getLocation.setOnClickListener {
-                checkLocationPermission()
-                checkGPS()
+               // checkLocationPermission()
+             //   checkGPS()
                 getUserLocation()
             }
 
         }
     }
 
+    //region Location
     private fun toast(activity: Activity, txt: String) {
         Toast.makeText(activity, txt, Toast.LENGTH_SHORT).show()
     }
@@ -133,6 +171,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun checkGPS() {
         locationRequest = com.google.android.gms.location.LocationRequest.create()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -177,20 +216,21 @@ class MainActivity : AppCompatActivity() {
         fusedLocationProviderClient.lastLocation.addOnCompleteListener{ task ->
             val location = task.getResult()
             if (location != null)
-            {
                 try {
                 val geocoder = Geocoder(this , Locale.getDefault())
                     val address = geocoder.getFromLocation( location.latitude , location.latitude , 1 )
                     //here we set the address to text view
                     val address_Line = address[0].getAddressLine(0)
                     binding.textView.text = address_Line.toString()
-                }catch (e : IOException)
+                }catch (_: IOException)
                 {
 
                 }
-            }
         }
 
+
+
     }
+    //endregion
 
 }
